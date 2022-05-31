@@ -1,0 +1,98 @@
+name: Dev Build
+
+on:
+  push:
+    branches: [ dev ]
+
+# cancel previous workflows, run only one workflow
+#concurrency:
+#  group: build-${{ github.event.push.number || github.event.pull_request.number || github.ref }}
+#  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: szenius/set-timezone@v1.0
+      with:
+        timezoneLinux: "Asia/Jakarta"
+        timezoneMacos: "Asia/Jakarta"
+        timezoneWindows: "Western Indonesia Time"
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        token: "${{ secrets.GITHUB_TOKEN }}"
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # https://stackoverflow.com/a/61699863/6404439
+    # ${{ steps.vars.outputs.branch }}
+    # ${{ steps.vars.outputs.hash }}
+    - name: Declare some variables
+      id: vars
+      shell: bash
+      run: |
+        echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        echo "::set-output name=hash::$(git rev-parse --short HEAD)"
+        echo "::set-output name=yarn::$(yarn cache dir)"
+        echo "::set-output name=npm::$(npm config get cache)"
+
+    - uses: actions/cache@v3
+      with:
+        path: |
+          ${{ steps.vars.outputs.yarn }}
+          ${{ steps.vars.outputs.npm }}
+          ./tmp
+          ./dist
+          ./node_modules
+          ./tests
+        key: ${{ runner.os }}-${{ hashFiles('.guid') }}
+
+    - name: Resolve git user
+      run: |
+        git config user.email "dimaslanjaka@gmail.com"
+        git config user.name "dimaslanjaka"
+        git fetch --all
+        git submodule update --init
+
+    - run: npm i -g gulp-cli typescript npm ts-node npm yarn
+    - run: yarn install --immutable
+
+    - name: fix module resolutions
+      if: ${{ false }}
+      continue-on-error: true
+      run: |
+        git add package.json
+        git add yarn.lock
+        cd tests && yarn install --check-files && git add yarn.lock
+
+    - name: Build
+      continue-on-error: true
+      run: |
+        yarn run build
+        git push
+
+    - name: Test JS
+      run: yarn run test:js
+
+    - name: Test TS
+      run: yarn run test:ts
+
+    - name: Test mocha
+      run: yarn run test:mocha
+
+    - name: Commit & Push
+      continue-on-error: true
+      run: |
+        git commit -m "build from ${{ steps.vars.outputs.hash }}"
+        git push
+
+#    - name: Re-deploy 🚀
+#      uses: JamesIves/github-pages-deploy-action@v4.3.0
+#      with:
+#        branch: main # The branch the action should deploy to.
+#        folder: . # The folder the action should deploy.
+#        force: false # merge instead delete old files
+#        token: "${{ secrets.GITHUB_TOKEN }}"
