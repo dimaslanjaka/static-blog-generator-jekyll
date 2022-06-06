@@ -24,6 +24,7 @@
     "primer-utilities": "^4.14.4"
   },
   "devDependencies": {
-    "@primer/sync": "^0.1.0"
+    "@primer/sync": "^0.1.0",
+    "static-blog-generator": "https://raw.githack.com/dimaslanjaka/static-blog-generator/dev/release/development.tgz"
   }
 }
