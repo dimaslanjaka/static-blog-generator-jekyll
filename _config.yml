@@ -35,3 +35,15 @@ plugins:
 
 # https://jekyllrb.com/docs/permalinks/
 permalink: :title.html
+
+# https://jekyllrb.com/docs/configuration/options/
+timezone: Asia/Jakarta
+
+# https://jekyllrb.com/docs/configuration/front-matter-defaults/
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "pages"
+    values:
+      layout: "default"
