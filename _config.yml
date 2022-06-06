@@ -54,6 +54,7 @@ plugins:
   - jekyll-redirect-from # https://github.com/jekyll/jekyll-redirect-from
   - jekyll-feed # https://github.com/jekyll/jekyll-feed
   - jekyll-archives # https://github.com/jekyll/jekyll-archives
+  - jekyll-youtube # https://github.com/dommmel/jekyll-youtube
 
 # https://github.com/github/jekyll-commonmark-ghpages#installation
 # https://github.com/jekyll/jekyll-commonmark
