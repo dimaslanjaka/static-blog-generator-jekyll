@@ -1,0 +1,10 @@
+/build
+/dist
+/docs
+node_modules
+.deploy_*
+/src
+/tests
+tmp
+/source
+/src-posts
