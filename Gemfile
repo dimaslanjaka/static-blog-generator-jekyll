@@ -9,4 +9,5 @@ gem 'jekyll-redirect-from'
 gem 'jekyll-commonmark-ghpages'
 gem 'jekyll-commonmark'
 gem 'jekyll-archives'
+gem 'jekyll-compose', group: [:jekyll_plugins]
 gemspec
