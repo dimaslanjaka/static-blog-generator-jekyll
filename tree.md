@@ -2,7 +2,6 @@
 layout: default
 ---
 
-{% post_url /bin/sbg %}
 {% post_url /_posts/bin/sbg %}
 
 ## References
