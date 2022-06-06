@@ -1,12 +1,18 @@
+# dev branch
 /build
 /dist
 /docs
-node_modules
 .deploy_*
 /src
 /tests
 tmp
 /source
 /src-posts
-.DS_Store
 /scripts
+
+#jekyll core
+.DS_Store
+_site
+.sass-cache
+.jekyll-metadata
+node_modules
