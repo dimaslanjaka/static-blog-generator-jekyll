@@ -12,7 +12,9 @@ tmp
 
 #jekyll core
 .DS_Store
-_site
-.sass-cache
 .jekyll-metadata
 node_modules
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
