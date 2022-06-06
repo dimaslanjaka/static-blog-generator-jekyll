@@ -53,6 +53,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from # https://github.com/jekyll/jekyll-redirect-from
   - jekyll-feed # https://github.com/jekyll/jekyll-feed
+  - jekyll-archives # https://github.com/jekyll/jekyll-archives
 
 # https://github.com/github/jekyll-commonmark-ghpages#installation
 # https://github.com/jekyll/jekyll-commonmark
