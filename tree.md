@@ -2,8 +2,6 @@
 layout: default
 ---
 
-{% post_url /_posts/bin/sbg %}
-
 ## References
 - https://github.com/Jcrash29/jcrash29.github.com
 - https://github.com/marketplace/actions/jekyll-build-optional-deploy-gh-pages
