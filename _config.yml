@@ -30,8 +30,12 @@ exclude:
 
 # Plugin settings
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
+  - jekyll-redirect-from # https://github.com/jekyll/jekyll-redirect-from
+  - jekyll-feed # https://github.com/jekyll/jekyll-feed
+
+feed:
+  path: /atom.xml
 
 # https://jekyllrb.com/docs/permalinks/
 permalink: :title.html
