@@ -1,0 +1,2 @@
+# https://jekyllrb.com/docs/permalinks/
+permalink: :title.html
