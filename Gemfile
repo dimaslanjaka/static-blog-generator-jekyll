@@ -8,4 +8,5 @@ gem 'jekyll-coffeescript'
 gem 'jekyll-redirect-from'
 gem 'jekyll-commonmark-ghpages'
 gem 'jekyll-commonmark'
+gem 'jekyll-archives'
 gemspec
