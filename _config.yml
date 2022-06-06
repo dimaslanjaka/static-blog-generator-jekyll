@@ -13,7 +13,7 @@ baseurl: "/static-blog-generator" # the subpath of your site, e.g. /blog
 url: "https://www.webmanajemen.com" # the base hostname & protocol for your site
 
 # Markdown settings
-markdown: kramdown
+markdown: CommonMarkGhPages # kramdown
 
 # Sass settings
 sass:
@@ -28,12 +28,6 @@ exclude:
   - CNAME
   - assets/sass
 
-# Plugin settings
-plugins:
-  - jekyll-sitemap
-  - jekyll-redirect-from # https://github.com/jekyll/jekyll-redirect-from
-  - jekyll-feed # https://github.com/jekyll/jekyll-feed
-
 # https://github.com/jekyll/jekyll-feed
 feed:
   path: /atom.xml
@@ -44,6 +38,7 @@ permalink: :title.html
 # https://jekyllrb.com/docs/configuration/options/
 timezone: Asia/Jakarta
 
+# frontmatter
 # https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
   -
@@ -52,3 +47,15 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+
+# Plugin settings
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from # https://github.com/jekyll/jekyll-redirect-from
+  - jekyll-feed # https://github.com/jekyll/jekyll-feed
+
+# https://github.com/github/jekyll-commonmark-ghpages#installation
+# https://github.com/jekyll/jekyll-commonmark
+commonmark:
+  options: ["SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "tables", "tagfilter"]
